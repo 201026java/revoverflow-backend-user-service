@@ -1,5 +1,4 @@
 {"properties": [
-
   {
     "name": "environment.rss.login.url",
     "type": "java.lang.String",
