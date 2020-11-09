@@ -1,11 +1,13 @@
 package com.revature.clients;
 
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
-@FeignClient(value = "RevOverflow-UserService")
+import com.revature.DTOs.RSSUserDTO;
+
+@FeignClient(name = "Accounts-Service", url = "${environment.rss.url}")
 public interface RSSClient {
 
-	@GetMapping
-	public String getPort();
+	@PostMapping("/login")
+	public RSSUserDTO loginUser(RSSUserDTO user);
 }
