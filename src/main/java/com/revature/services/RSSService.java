@@ -1,6 +1,7 @@
 package com.revature.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
@@ -31,21 +32,28 @@ public class RSSService {
 		return this.cbFactory.create("login").run( 
 			() -> {
 					RSSUserDTO u = rssClient.loginUser(user); 
+					User auth; 
 					if(u == null) {
 						return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
 					}
-					User auth = new User(u.getUserId(), 0, 0, u.isAdmin(), null, u.getEmail(), u.getFirstName(), u.getLastName());
+					List<RSSAccountDTO> tempAccts = rssClient.findAccountByUserId(u);
+					RSSAccountDTO acc = new RSSAccountDTO(tempAccts.get(0));
 					
-					if (!userRepository.existsById(auth.getUserID())) {
-						//Remember to use this line
-						List<RSSAccountDTO> tempAccts = rssClient.findAccountByUserId(u);
-						RSSAccountDTO acc = new RSSAccountDTO(tempAccts.get(0));
+					if (!userRepository.existsById(u.getUserId())) {
+						auth = new User(u.getUserId(), 0, 0, u.isAdmin(), null, u.getEmail(), u.getFirstName(), u.getLastName());
 						auth.setRSSAccountId(acc.getAccId());
 						auth.setPoints(acc.getPoints());
+						return ResponseEntity.ok(userRepository.save(auth));
 					}else {
-						
+						Optional<User> optAuth = userRepository.findById(u.getUserId());
+						if(optAuth.isPresent()) {
+							auth = optAuth.get();
+							auth.setRSSAccountId(acc.getAccId());
+							auth.setPoints(acc.getPoints());
+							return ResponseEntity.ok(userRepository.save(auth));
+						}
 					}
-					return ResponseEntity.ok(userRepository.save(auth));
+					return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
 				},
 				throwable -> loginFallback());
 }
