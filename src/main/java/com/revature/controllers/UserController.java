@@ -3,14 +3,17 @@ package com.revature.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.revature.clients.RSSClient;
+import com.revature.DTOs.RSSUserDTO;
 import com.revature.models.User;
 import com.revature.services.RSSService;
 import com.revature.services.UserService;
@@ -31,8 +34,6 @@ public class UserController {
 	@Autowired
 	RSSService rssService;
 	
-	@Autowired
-	private RSSClient rssClient;
 
 	@GetMapping
 	public List<User> getAllUser(){
@@ -45,9 +46,10 @@ public class UserController {
 		return userService.getUserById(id);
 	}
 	
-	/*
-	 * @PostMapping("/login") public ResponseEntity<User> loginUser(@RequestBody
-	 * RSSUserDTO user) { return rssService.login(user); }
-	 */
+	@PostMapping("/login") 
+	public ResponseEntity<User> loginUser(@RequestBody RSSUserDTO user) { 
+		return rssService.login(user); 
+	}
+	
 
 }
