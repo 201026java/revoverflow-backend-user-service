@@ -1,7 +1,8 @@
 {"properties": [
+  
   {
-    "name": "environment.rss.url",
+    "name": "environment.rss.login.url",
     "type": "java.lang.String",
-    "description": "A description for 'environment.rss.url'"
+    "description": "A description for 'environment.rss.login.url'"
   }
 ]}

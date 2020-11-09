@@ -10,4 +10,11 @@ public class RSSAccountDTO {
     private int userId;
     private int accTypeId;
 	private int points;
+	
+	public RSSAccountDTO(RSSAccountDTO rssAccountDTO) {
+		this.accId = rssAccountDTO.getAccId();
+		this.userId = rssAccountDTO.getUserId();
+		this.accTypeId = rssAccountDTO.getAccTypeId();
+		this.points = rssAccountDTO.getPoints();
+	}
 }
