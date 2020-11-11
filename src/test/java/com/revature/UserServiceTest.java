@@ -1,6 +1,7 @@
 package com.revature;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,7 +29,10 @@ public class UserServiceTest {
 	@InjectMocks
 	UserService userService;
 	
-
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
 	
 //	@Before
 //	public void setup() {
