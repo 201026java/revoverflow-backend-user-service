@@ -23,7 +23,7 @@ public class UserService {
 		List<User> users = userRepository.findAll();
 
 		if(users.size() != 0) {
-			System.out.print(users.size());
+			System.out.println(users.size());
 			return users;		
 		}
 
