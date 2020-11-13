@@ -11,14 +11,10 @@ import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 @Entity
-@Data @Getter @Setter @NoArgsConstructor @AllArgsConstructor @EqualsAndHashCode @ToString
+@Data  @NoArgsConstructor @AllArgsConstructor	
 public class User {
 
 	@Id
@@ -50,19 +46,19 @@ public class User {
 	@Transient
 	private String jwt;
 	
-	public User(@NotNull int userID, int rSSAccountId, int points, boolean admin, byte[] profilePicture,
-			@Valid @NotBlank @Email(message = "Should be a valid email") String email, String firstName,
-			String lastName) {
-		super();
-		this.userID = userID;
-		this.RSSAccountId = rSSAccountId;
-		this.points = points;
-		this.admin = admin;
-		this.profilePicture = profilePicture;
-		this.email = email;
-		this.firstName = firstName;
-		this.lastName = lastName;
-	}
+	public User(@NotNull int userID, 
+				boolean admin,
+				@Valid @NotBlank @Email(message = "Should be a valid email") 
+				String email, 
+				String firstName,
+				String lastName) {
+									super();
+									this.userID = userID;
+									this.admin = admin;
+									this.email = email;
+									this.firstName = firstName;
+									this.lastName = lastName;
+								}
 
 }
 
