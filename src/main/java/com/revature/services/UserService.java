@@ -52,28 +52,5 @@ public class UserService {
 			}
 			return null;
 	}
-	
-	
-//	public Collection<GrantedAuthority> getAuthority(User u){
-//		Collection<GrantedAuthority>auths = new ArrayList<>();
-//		Optional<User> optUser = userRepository.findById(u.getUserID());
-//		SimpleGrantedAuthority a= null; 
-//		
-//		if (optUser.isPresent()) {
-//			User user = optUser.get();
-//			if(user.isAdmin()) {
-//				a = new SimpleGrantedAuthority("admin");
-//				auths.add(a);
-//				a = new SimpleGrantedAuthority("user");
-//				auths.add(a);
-//			}else {
-//				a = new SimpleGrantedAuthority("user");
-//				auths.add(a);
-//				
-//			}
-//		}
-//		return auths;
-//		
-//	}
 
 }
