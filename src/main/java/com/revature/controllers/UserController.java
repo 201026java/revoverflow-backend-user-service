@@ -1,12 +1,10 @@
 package com.revature.controllers;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -53,11 +51,6 @@ public class UserController {
 	@PostMapping("/authorize")
 	public ResponseEntity<User> authUser(@RequestBody User user){
 		return rssService.getUserByEmail(user.getEmail());
-	}
-	
-	@PostMapping("/roles")
-	public Collection<GrantedAuthority> getRoles(@RequestBody User user){
-		return rssService.getAuthority(user);
 	}
 	
 	@PostMapping("/login") 
