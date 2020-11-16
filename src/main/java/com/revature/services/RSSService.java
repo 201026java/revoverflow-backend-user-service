@@ -74,7 +74,6 @@ public class RSSService {
 		 return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(null); 
 	 }
 	 
-<<<<<<< HEAD
 	 public Collection<GrantedAuthority> getAuthority(User u){
 			Collection<GrantedAuthority>auths = new ArrayList<>();
 			Optional<User> optUser = userRepository.findById(u.getUserID());
@@ -103,7 +102,5 @@ public class RSSService {
 		}
 		return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
 	}
-=======
->>>>>>> 40f59b3... Created feign client to retrieve user information from the RSS service. Add environmental varible for the RSS sevice url in the application.properties file.
 
 }
