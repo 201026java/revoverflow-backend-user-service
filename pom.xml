@@ -16,14 +16,8 @@
 
 	<properties>
 		<java.version>1.8</java.version>
-<<<<<<< HEAD
-<<<<<<< HEAD
 		<spring-cloud.version>Hoxton.SR9</spring-cloud.version>
-=======
->>>>>>> 2f52cfd... Modified the pom.xml form version 2.3.5 to 2.3.4 where it cause Spring to hang whenever a feignClient is enabled.
-=======
-		<spring-cloud.version>Hoxton.SR9</spring-cloud.version>
->>>>>>> 30025f6... Testing security between services
+
 	</properties>
 	<dependencies>
 		<dependency>
@@ -96,19 +90,10 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 30025f6... Testing security between services
 			<artifactId>spring-cloud-starter-consul-discovery</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-<<<<<<< HEAD
-=======
->>>>>>> 2f52cfd... Modified the pom.xml form version 2.3.5 to 2.3.4 where it cause Spring to hang whenever a feignClient is enabled.
-=======
->>>>>>> 30025f6... Testing security between services
 			<artifactId>spring-cloud-starter-openfeign</artifactId>
 		</dependency>
 	</dependencies>
