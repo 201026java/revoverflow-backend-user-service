@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+     revoverflow-user-service:
+         image: 'ro-user:latest'
+         build:
+             context: .
+             dockerfile: Dockerfile
+         volumes:
+             - '/userservice'
+             - '/root/.m2'
+         ports:
+             - '8081:8081'
