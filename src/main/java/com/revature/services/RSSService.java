@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.circuitbreaker.CircuitBreakerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
@@ -26,8 +25,9 @@ public class RSSService {
 	@Autowired
 	private UserRepository userRepository;
 
-	//@Autowired
-	private CircuitBreakerFactory<?, ?> cbFactory;
+	/*
+	 * @Autowired private CircuitBreakerFactory<?, ?> cbFactory;
+	 */
 	
 	@Autowired
 	private RSSClient rssClient;
@@ -37,8 +37,6 @@ public class RSSService {
 	
 	public ResponseEntity<User> login(RSSUserDTO user) { 
 
-		return this.cbFactory.create("login").run( 
-			() -> {
 					RSSUserDTO u = rssClient.loginUser(user); 
 					User auth; 
 					if(u == null) {
@@ -66,13 +64,7 @@ public class RSSService {
 						}
 					}
 					return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
-				},
-				throwable -> loginFallback());
 }
-	  
-	 public ResponseEntity<User> loginFallback() { 
-		 return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(null); 
-	 }
 	 
 	 public Collection<GrantedAuthority> getAuthority(User u){
 			Collection<GrantedAuthority>auths = new ArrayList<>();
