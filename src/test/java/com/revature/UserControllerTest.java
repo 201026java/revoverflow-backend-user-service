@@ -3,8 +3,8 @@ package com.revature;
 import static org.junit.Assert.assertEquals;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 
+import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +40,7 @@ public class UserControllerTest {
 	@Autowired
 	private MockMvc mockMvc;
 
-	@BeforeEach
+	@Before
 	public void setup() {
 		u1 = new User(12, 26, 0, true, null, "admin@rss.com", "Admin", "Admin", null);
 		mockMvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
@@ -49,7 +49,7 @@ public class UserControllerTest {
 	@Test
 	@WithMockUser(username = "user@rss.com", password = "12345", authorities = "USER")
 	public void will_return_user_with_a_status_of_200() throws Exception {
-		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/12").accept(MediaType.APPLICATION_JSON))
+		MvcResult result = mockMvc.perform(MockMvcRequestBuilders.get("/user/12").accept(MediaType.APPLICATION_JSON))
 				.andReturn();
 		String content = result.getResponse().getContentAsString();
 		assertEquals(200, result.getResponse().getStatus());
@@ -61,7 +61,7 @@ public class UserControllerTest {
 	 @Test
 	 @WithMockUser(username = "user@rss.com", password = "12345", authorities = "USER") 
 	 public void will__not_return_user_with_a_status_of_200() throws Exception { MvcResult
-		 result = mockMvc.perform(MockMvcRequestBuilders.get("/15")
+		 result = mockMvc.perform(MockMvcRequestBuilders.get("/user/15")
 		 .accept(MediaType.APPLICATION_JSON) ).andReturn(); String content =
 		 result.getResponse().getContentAsString(); assertEquals(200,
 		 result.getResponse().getStatus()); assertEquals("", content); 
@@ -71,7 +71,7 @@ public class UserControllerTest {
 	@WithMockUser(username = "user@rss.com", password = "Password123!", authorities = "user")
 	public void will_return_nothing_with_a_status_of_400() throws Exception {
 		MvcResult result = mockMvc
-				.perform(MockMvcRequestBuilders.get("/alatreon").accept(MediaType.APPLICATION_JSON)).andReturn();
+				.perform(MockMvcRequestBuilders.get("/user/alatreon").accept(MediaType.APPLICATION_JSON)).andReturn();
 		String content = result.getResponse().getContentAsString();
 		assertEquals(400, result.getResponse().getStatus());
 		assertEquals("", content);
