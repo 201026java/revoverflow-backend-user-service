@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Optional;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import org.mockito.InjectMocks;
@@ -32,7 +32,7 @@ public class RSSServiceTest {
 	RSSService rssService;
 	
 
-	@BeforeEach
+	@Before
 	public void setup() {		
 		u1 = (new User(12,26,0,true,null,"admin@rss.com","Admin","Admin", null));
 		u2 = (new User(13,26,0,false,null,"user@rss.com","User","User", null));

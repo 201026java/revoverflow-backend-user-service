@@ -3,8 +3,8 @@ package com.revature;
 import static org.junit.Assert.assertEquals;
 import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
 
+import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +41,7 @@ public class UserControllerTest {
 	private MockMvc mockMvc;
 
 	@BeforeEach
-	public void setUp() {
+	public void setup() {
 		u1 = new User(12, 26, 0, true, null, "admin@rss.com", "Admin", "Admin", null);
 		mockMvc = MockMvcBuilders.webAppContextSetup(context).apply(springSecurity()).build();
 	}
