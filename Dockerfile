@@ -28,4 +28,7 @@ COPY src /userservice/src
 #RUN mvn package
 RUN mvn -B -f /userservice/pom.xml clean install
 #RUN mvn -B -f /tmp/pom.xml dependency:resolve
+
+VOLUME /root/.m2
+
 ENTRYPOINT ["java", "-jar", "/root/.m2/repository/com/revature/userservice/0.0.1-SNAPSHOT/userservice-0.0.1-SNAPSHOT.jar"]

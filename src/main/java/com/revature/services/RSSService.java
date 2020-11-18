@@ -26,7 +26,7 @@ public class RSSService {
 	@Autowired
 	private UserRepository userRepository;
 
-	@Autowired
+	//@Autowired
 	private CircuitBreakerFactory<?, ?> cbFactory;
 	
 	@Autowired
