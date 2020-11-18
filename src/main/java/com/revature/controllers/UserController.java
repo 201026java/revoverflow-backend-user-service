@@ -18,7 +18,7 @@ import com.revature.services.RSSService;
 import com.revature.services.UserService;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping
 
 public class UserController {
 
